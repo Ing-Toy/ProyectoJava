@@ -16,6 +16,11 @@ public class InitialPageController {
     }
 
     @FXML
+    void enterGameOnline(ActionEvent event) {
+        MainWindow.app.setScene("/client/OnlineGameView.fxml");
+    }
+
+    @FXML
     void quitGame(ActionEvent event) {
         System.exit(0);
     }

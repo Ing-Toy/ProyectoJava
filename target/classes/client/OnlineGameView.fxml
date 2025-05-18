@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/onlinegamestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.OnlineGameViewController">
+    <children>
+        <Label fx:id="lblTag" text="Dealer" />
+        <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0" />
+        <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <VBox fx:id="boxTag" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label fx:id="lblTag" text="Player 1" />
+                        <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0" />
+                        <Label fx:id="lblPoints" />
+                    </children>
+                </VBox>
+            <VBox fx:id="boxTag" layoutX="305.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblTag" text="Player 2" />
+                  <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0" />
+                  <Label fx:id="lblPoints1" />
+               </children>
+            </VBox>
+            <VBox fx:id="boxTag" layoutX="110.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblTag" text="Player 3" />
+                  <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0" />
+                  <Label fx:id="lblPoints11" />
+               </children>
+            </VBox>
+            <VBox fx:id="boxTag" layoutX="143.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblTag" text="Player 4" />
+                  <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0" />
+                  <Label fx:id="lblPoints111" />
+               </children>
+            </VBox>
+            </children>
+        </HBox>
+            <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Button fx:id="btnStand" mnemonicParsing="false" onAction="#onStand" text="Stand" />
+                    <Button fx:id="btnHit" mnemonicParsing="false" onAction="#onHit" text="Hit" />
+                </children>
+            </HBox>
+        <HBox fx:id="boxTag" prefWidth="200.0">
+            <children>
+                <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Replay" />
+            </children>
+        </HBox>
+        <Label fx:id="spacer" />
+    </children>
+</VBox>

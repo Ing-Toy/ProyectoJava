@@ -21,6 +21,7 @@
                </font>
             </Button>
             <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#enterGame2p" text="Me and com" />
+            <Button fx:id="btnPlay" layoutX="356.0" layoutY="35.0" mnemonicParsing="false" onAction="#enterGameOnline" prefHeight="42.0" prefWidth="138.0" text="Online game" />
          </children>
       </HBox>
       <Button fx:id="btnQuit" mnemonicParsing="false" onAction="#quitGame" text="Quit">
