@@ -1,0 +1,213 @@
+.root
+{
+    -fx-background-color: rgb(0, 92, 0);
+    -fx-background-size: cover;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+#spacer
+{
+    -fx-padding: 0 400 0 400;
+    -fx-text-fill: white;
+}
+
+#lblDealer
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxDealer
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+#lblPlayer1
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#lblPlayer2
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#lblPlayer3
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#lblPlayer4
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#lblPoints
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxPlayers
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#vboxPlayers
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+    -fx-padding: 5px;;
+}
+
+#hboxPlayer
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#hboxPlayer2
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#hboxControls
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+#btnStand
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 150px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: blue;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnStand:hover
+{
+    -fx-background-color: rgb(0, 183, 255);
+    -fx-text-fill: black;
+}
+
+#btnStand:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+
+#btnHit
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 150px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(126, 0, 0);
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnHit:hover
+{
+    -fx-background-color: red;
+    -fx-text-fill: black;
+}
+
+#btnHit:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#hboxBackToMenu
+{
+    -fx-padding: 3;
+}
+
+#btnBackToMenu
+{
+    -fx-text-fill: white;
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: black;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnBackToMenu:hover
+{
+    -fx-background-color: rgb(80, 80, 80);
+}
+
+#btnBackToMenu:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnReplay
+{
+    -fx-text-fill: Black;
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnReplay:hover
+{
+    
+    -fx-font-weight: bold;
+}
+
+#btnReplay:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#hboxSpacer
+{
+    -fx-pref-width: 150px;
+    -fx-padding: 5 5 5 5;
+}

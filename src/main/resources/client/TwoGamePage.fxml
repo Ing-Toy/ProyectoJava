@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/game.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.TwoGamePageController">
+    <children>
+        <Label fx:id="lblDealer" text="Dealer" />
+        <HBox fx:id="hboxDealer" prefHeight="100.0" prefWidth="200.0" />
+      <HBox fx:id="hboxPlayers" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="vboxPlayers" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                    <Label fx:id="lblPlayer1" text="Player 1" />
+                    <HBox fx:id="hboxPlayer" prefHeight="100.0" prefWidth="200.0" />
+                    <Label fx:id="lblPoints" />
+                    <HBox fx:id="hboxControls" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Button fx:id="btnStand" mnemonicParsing="false" onAction="#onStand" text="Stand" />
+                            <Button fx:id="btnHit" mnemonicParsing="false" onAction="#onHit" text="Hit" />
+                        </children>
+                    </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vboxPlayers" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblPlayer2" text="Player 2" />
+                  <HBox fx:id="hboxPlayer2" prefHeight="100.0" prefWidth="200.0" />
+                  <Label fx:id="lblPoints2" />
+                  <HBox fx:id="hboxSpacer" prefHeight="120.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+        <HBox fx:id="hboxBackToMenu" prefWidth="200.0">
+            <children>
+                <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Replay" />
+            </children>
+        </HBox>
+        <Label fx:id="spacer" />
+    </children>
+</VBox>
