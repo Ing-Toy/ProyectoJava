@@ -6,19 +6,7 @@
     -fx-spacing: 10;
 }
 
-#spacer
-{
-    -fx-padding: 0 400 0 400;
-    -fx-text-fill: white;
-}
-
-#hboxDealer
-{
-    -fx-alignment: center;
-    -fx-spacing: 10;
-}
-
-#lblTag
+#lblDealer
 {
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
@@ -28,7 +16,161 @@
     -fx-padding: 5px;
 }
 
-#boxTag
+#hboxDealer
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#hboxPlayers
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#vboxContainerPlayer1
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+    -fx-border-color: black;
+}
+
+#lblPlayer1
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxCardsPlayer1
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#lblPointsPlayer1
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#vboxContainerPlayer2
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+    -fx-border-color: black;
+}
+
+#lblPlayer2
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxCardsPlayer2
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#lblPointsPlayer2
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#vboxContainerPlayer3
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+    -fx-border-color: black;
+}
+
+#lblPlayer3
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxCardsPlayer3
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#lblPointsPlayer3
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#vboxContainerPlayer4
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+    -fx-border-color: black;
+}
+
+#lblPlayer4
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxCardsPlayer4
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#lblPointsPlayer4
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxGambleButtons
 {
     -fx-alignment: center;
     -fx-spacing: 10;
@@ -80,9 +222,11 @@
     -fx-padding: 2 4 3 4;
 }
 
-#hboxBackToMenu
+#hboxMenuButtons
 {
-    -fx-padding: 3;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
 }
 
 #btnBackToMenu
@@ -119,11 +263,140 @@
 
 #btnReplay:hover
 {
-    
+
     -fx-font-weight: bold;
 }
 
 #btnReplay:pressed
 {
     -fx-padding: 2 4 3 4;
+}
+
+#btnAddPlayer
+{
+    -fx-text-fill: Black;
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnAddPlayer:hover
+{
+
+    -fx-font-weight: bold;
+}
+
+#btnAddPlayer:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnRemovePlayer
+{
+    -fx-text-fill: white;
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: black;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnRemovePlayer:hover
+{
+    -fx-background-color: rgb(80, 80, 80);
+}
+
+#btnRemovePlayer:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#spacer
+{
+    -fx-padding: 0 600 0 600;
+    -fx-text-fill: white;
+}
+
+#lblChipsP1
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblBetP1
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblChipsP2
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblBetP2
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblChipsP3
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblBetP3
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblChipsP4
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblBetP4
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
 }

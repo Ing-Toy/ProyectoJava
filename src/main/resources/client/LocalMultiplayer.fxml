@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/onlinegamestyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.OnlineGameViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/LocalMultiplayerStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.LocalMultiplayerController">
     <children>
         <Label fx:id="lblDealer" text="Dealer" />
         <HBox fx:id="hboxDealer" prefHeight="100.0" prefWidth="200.0" />
@@ -14,12 +14,12 @@
                         <Label fx:id="lblPlayer1" text="Player 1" />
                         <HBox fx:id="hboxCardsPlayer1" prefHeight="100.0" prefWidth="200.0" />
                         <Label fx:id="lblPointsPlayer1" />
-                        <VBox>
-                            <children>
-                                <Label fx:id="lblChipsP1" text="Chips: " />
-                                <Label fx:id="lblBetP1" text="Bet: " />
-                            </children>
-                        </VBox>
+                  <VBox>
+                     <children>
+                        <Label fx:id="lblChipsP1" text="Chips: " />
+                        <Label fx:id="lblBetP1" text="Bet: " />
+                     </children>
+                  </VBox>
                     </children>
                 </VBox>
                 <VBox fx:id="vboxContainerPlayer2" layoutX="305.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
@@ -27,12 +27,12 @@
                         <Label fx:id="lblPlayer2" text="Player 2" />
                         <HBox fx:id="hboxCardsPlayer2" prefHeight="100.0" prefWidth="200.0" />
                         <Label fx:id="lblPointsPlayer2" />
-                        <VBox>
-                            <children>
-                                <Label fx:id="lblChipsP2" text="Chips: " />
-                                <Label fx:id="lblBetP2" text="Bet: " />
-                            </children>
-                        </VBox>
+                  <VBox>
+                     <children>
+                        <Label fx:id="lblChipsP2" text="Chips: " />
+                        <Label fx:id="lblBetP2" text="Bet: " />
+                     </children>
+                  </VBox>
                     </children>
                 </VBox>
                 <VBox fx:id="vboxContainerPlayer3" layoutX="110.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
@@ -40,12 +40,12 @@
                         <Label fx:id="lblPlayer3" text="Player 3" />
                         <HBox fx:id="hboxCardsPlayer3" prefHeight="100.0" prefWidth="200.0" />
                         <Label fx:id="lblPointsPlayer3" />
-                        <VBox>
-                            <children>
-                                <Label fx:id="lblChipsP3" text="Chips: " />
-                                <Label fx:id="lblBetP3" text="Bet: " />
-                            </children>
-                        </VBox>
+                  <VBox>
+                     <children>
+                        <Label fx:id="lblChipsP3" text="Chips: " />
+                        <Label fx:id="lblBetP3" text="Bet: " />
+                     </children>
+                  </VBox>
                     </children>
                 </VBox>
                 <VBox fx:id="vboxContainerPlayer4" layoutX="143.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
@@ -53,12 +53,12 @@
                         <Label fx:id="lblPlayer4" text="Player 4" />
                         <HBox fx:id="hboxCardsPlayer4" prefHeight="100.0" prefWidth="200.0" />
                         <Label fx:id="lblPointsPlayer4" />
-                        <VBox>
-                            <children>
-                                <Label fx:id="lblChipsP4" text="Chips: " />
-                                <Label fx:id="lblBetP4" text="Bet: " />
-                            </children>
-                        </VBox>
+                  <VBox>
+                     <children>
+                        <Label fx:id="lblChipsP4" text="Chips: " />
+                        <Label fx:id="lblBetP4" text="Bet: " />
+                     </children>
+                  </VBox>
                     </children>
                 </VBox>
             </children>
@@ -73,6 +73,9 @@
             <children>
                 <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
                 <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Deal cards" />
+            <Label prefWidth="200.0" />
+            <Button fx:id="btnAddPlayer" mnemonicParsing="false" onAction="#onAddPlayer" text="Add player" />
+            <Button fx:id="btnRemovePlayer" mnemonicParsing="false" onAction="#onRemovePlayer" text="Remove player" />
             </children>
         </HBox>
         <Label fx:id="spacer" />

@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Computer extends Hand { // Player automatically participates
     private Random random;
+
     public Computer(Random random) {
         this.random = random;
     }

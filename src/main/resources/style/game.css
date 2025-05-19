@@ -38,36 +38,6 @@
     -fx-padding: 5px;
 }
 
-#lblPlayer2
-{
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
-    -fx-pref-width: -1;
-    -fx-alignment: center;
-    -fx-font-size: 20px;
-    -fx-padding: 5px;
-}
-
-#lblPlayer3
-{
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
-    -fx-pref-width: -1;
-    -fx-alignment: center;
-    -fx-font-size: 20px;
-    -fx-padding: 5px;
-}
-
-#lblPlayer4
-{
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
-    -fx-pref-width: -1;
-    -fx-alignment: center;
-    -fx-font-size: 20px;
-    -fx-padding: 5px;
-}
-
 #lblPoints
 {
     -fx-text-fill: white;
@@ -210,4 +180,24 @@
 {
     -fx-pref-width: 150px;
     -fx-padding: 5 5 5 5;
+}
+
+#lblChips
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
+
+#lblBet
+{
+    -fx-text-fill: rgb(255, 244, 174);
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
 }

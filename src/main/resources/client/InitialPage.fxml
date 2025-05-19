@@ -15,13 +15,12 @@
       </Label>
       <HBox fx:id="hboxPlayers" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#enterGame1p" prefHeight="36.0" prefWidth="98.0" text="Only me">
+            <Button fx:id="btnLocal" mnemonicParsing="false" onAction="#enterLocalOptions" prefHeight="36.0" prefWidth="98.0" text="Local">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#enterGame2p" text="Me and com" />
-            <Button fx:id="btnPlay" layoutX="356.0" layoutY="35.0" mnemonicParsing="false" onAction="#enterGameOnline" prefHeight="42.0" prefWidth="138.0" text="Online game" />
+            <Button fx:id="btnOnline" layoutX="356.0" layoutY="35.0" mnemonicParsing="false" onAction="#enterGameOnline" prefHeight="42.0" prefWidth="138.0" text="Online" />
          </children>
       </HBox>
       <Button fx:id="btnQuit" mnemonicParsing="false" onAction="#quitGame" text="Quit">
@@ -29,5 +28,17 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <VBox>
+         <children>
+            <Label fx:id="lblChips" text="Chips: " />
+            <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnMinus" mnemonicParsing="false" onAction="#onMinus" text="-" />
+                  <Label fx:id="lblBet" text="Bet: " />
+                  <Button fx:id="btnPlus" mnemonicParsing="false" onAction="#onPlus" text="+" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </VBox>

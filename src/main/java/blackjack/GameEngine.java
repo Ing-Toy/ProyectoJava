@@ -1,6 +1,7 @@
 package blackjack;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameEngine {
@@ -47,6 +48,7 @@ public class GameEngine {
             if (Casa.IsBlackjack() == true){
                 EndGame(Jugador,Casa,Computadoras);
             } else {
+                /*
                 for (int player = 2;player < numplayers; player++) {
                     //System.out.println("---Player "+player+" turn.---");
 
@@ -70,6 +72,8 @@ public class GameEngine {
                         }
                     }
                 }
+
+
                 //System.out.println("------ House Turn ------ ");
                 boolean houseplaying = true;
                 //System.out.println("House hand: "+Casa.HandStrprint());
@@ -83,6 +87,8 @@ public class GameEngine {
                         houseplaying = false;
                         break;
                     }}
+
+                 */
                 EndGame(Jugador,Casa,Computadoras);
 
             }

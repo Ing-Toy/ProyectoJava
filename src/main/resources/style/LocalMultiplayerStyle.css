@@ -36,6 +36,7 @@
     -fx-spacing: 10;
     -fx-pref-width: -1;
     -fx-border-color: black;
+    -fx-padding: 5px;
 }
 
 #lblPlayer1
@@ -71,6 +72,7 @@
     -fx-spacing: 10;
     -fx-pref-width: -1;
     -fx-border-color: black;
+    -fx-padding: 5px;
 }
 
 #lblPlayer2
@@ -106,6 +108,7 @@
     -fx-spacing: 10;
     -fx-pref-width: -1;
     -fx-border-color: black;
+    -fx-padding: 5px;
 }
 
 #lblPlayer3
@@ -141,6 +144,7 @@
     -fx-spacing: 10;
     -fx-pref-width: -1;
     -fx-border-color: black;
+    -fx-padding: 5px;
 }
 
 #lblPlayer4
@@ -198,7 +202,6 @@
 {
     -fx-padding: 2 4 3 4;
 }
-
 
 #btnHit
 {
@@ -263,7 +266,7 @@
 
 #btnReplay:hover
 {
-
+    
     -fx-font-weight: bold;
 }
 
@@ -285,7 +288,7 @@
 
 #btnAddPlayer:hover
 {
-
+    
     -fx-font-weight: bold;
 }
 

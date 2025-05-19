@@ -4,6 +4,7 @@ import blackjack.Card;
 import blackjack.GameEngine;
 import blackjack.Hand;
 import blackjack.House;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +12,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import static client.PlayerSession.bet;
+
 public class OneGamePageController {
+
+    @FXML
+    private Label lblBet;
+
+    @FXML
+    private Label lblChips;
 
     @FXML
     private Label lblPlayer1;
@@ -87,10 +96,10 @@ public class OneGamePageController {
         int total = engine.getJugador().TotalSum();
 
         if (total == 21) {
-            lblPoints.setText("Blackjack!");
+            PlayerSession.chips += bet * 2;
             showHand(engine.getCasa(), hboxDealer);
             String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
-            lblPlayer1.setText("Player 1 " + result + " with 21 points");
+            lblPlayer1.setText(PlayerSession.playerName + " " + result + " with 21 points");
             lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
             btnHit.setDisable(true);
             btnStand.setDisable(true);
@@ -118,20 +127,18 @@ public class OneGamePageController {
             dealer.addCard(engine.getDeck().dealCard());
         }
 
-        if (dealer.TotalSum() == 21) {
-            showHand(dealer, hboxDealer);
-            lblDealer.setText("Blackjack!");
-            String result = GameEngine.EvalHand(engine.getJugador(), dealer);
-            lblPlayer1.setText("Player 1 " + result + " with " + engine.getJugador().TotalSum() + " points");
-            return;
-        }
-
         showHand(dealer, hboxDealer);
 
 
 
         String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
-        lblPlayer1.setText("Player 1 " + result + " with " + engine.getJugador().TotalSum() + " points");
+        if (result.contains("W")) {
+            PlayerSession.chips += bet * 2;
+        } else if (result.contains("D")) {
+            PlayerSession.chips += bet;
+        }
+
+        lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
         lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
     }
 
@@ -148,9 +155,20 @@ public class OneGamePageController {
         showHand(engine.getJugador(), hboxPlayer);
         hiddenDealer(engine.getCasa(), hboxDealer);
 
-        lblPlayer1.setText("Player 1");
+        lblPlayer1.setText(PlayerSession.playerName);
         lblDealer.setText("Dealer");
         lblPoints.setText("" + engine.getJugador().TotalSum());
+
+        if (PlayerSession.chips < bet) {
+            btnHit.setDisable(true);
+            btnStand.setDisable(true);
+            return;
+        }
+
+        lblChips.setText("Chips: " + PlayerSession.chips);
+        lblBet.setText("Bet: " + bet);
+
+        PlayerSession.chips -= bet;
 
         if (engine.gameShouldEndImmediately()) {
             showHand(engine.getCasa(), hboxDealer);
@@ -158,8 +176,9 @@ public class OneGamePageController {
 
             if (engine.getJugador().IsBlackjack()) {
                 lblPlayer1.setText("Blackjack!");
+                PlayerSession.chips += bet * 2;
             } else {
-                lblPlayer1.setText("Player 1 " + result + " with " + engine.getJugador().TotalSum() + " points");
+                lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
             }
 
             if (engine.getCasa().IsBlackjack()) {

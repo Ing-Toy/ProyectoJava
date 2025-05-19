@@ -18,11 +18,17 @@
             <Button fx:id="btnHit" mnemonicParsing="false" onAction="#onHit" text="Hit" />
          </children>
       </HBox>
+      <VBox>
+         <children>
+            <Label fx:id="lblChips" text="Chips: " />
+            <Label fx:id="lblBet" text="Bet: " />
+         </children>
+      </VBox>
       <HBox fx:id="hboxBackToMenu" prefWidth="200.0">
          <children>
             <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Replay" />
+            <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Deal cards" />
          </children>
       </HBox>
       <Label fx:id="spacer" />
