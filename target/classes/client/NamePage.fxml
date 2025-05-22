@@ -9,7 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/namePageStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.NamePageController">
    <children>
-      <Label fx:id="lblFront" text="Before entering the blackjack table" />
+      <Label fx:id="lblFront" text="To enter the casino you need to show your id!" />
       <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label fx:id="lblChoose" text="Choose your casino name:" />

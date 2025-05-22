@@ -1,6 +1,6 @@
 .root
 {
-    -fx-background-image: url("/images/hallwaypaper.jpg");
+    -fx-background-image: url("/images/doorpaper.jpg");
     -fx-background-size: cover;
     -fx-alignment: center;
     -fx-spacing: 10;
@@ -45,6 +45,7 @@
     -fx-font-size: 14px;
     -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
     -fx-font-weight: bold;
+
 }
 
 #btnSend:hover

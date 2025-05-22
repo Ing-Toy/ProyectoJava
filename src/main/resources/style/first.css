@@ -1,6 +1,6 @@
 .root
 {
-    -fx-background-image: url("/images/casinopaper.jpg");
+    -fx-background-image: url("/images/localpaper.jpg");
     -fx-background-size: cover;
     -fx-alignment: center;
     -fx-spacing: 10;
@@ -12,7 +12,17 @@
     -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
     -fx-pref-width: -1;
     -fx-alignment: center;
-    -fx-font-size: 30px;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+#lblCasino
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 25px;
     -fx-font-weight: bold;
 }
 

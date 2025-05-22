@@ -8,7 +8,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style/localOptionsStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.LocalOptionsPageController">
    <children>
-      <Label fx:id="lblTag" text="How many players?" />
+      <Label fx:id="lblTag" text="How many players would be joining to your table?" />
       <HBox fx:id="boxTag" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="btn1p" mnemonicParsing="false" onAction="#enterGame1p" text="Only me" />

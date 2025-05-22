@@ -1,6 +1,6 @@
 .root
 {
-    -fx-background-image: url("/images/localpaper.jpg");
+    -fx-background-image: url("/images/tablepaper.jpg");
     -fx-background-size: cover;
     -fx-alignment: center;
     -fx-spacing: 10;
