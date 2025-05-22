@@ -54,6 +54,9 @@ public class LocalMultiplayerController {
     private Button btnHit;
 
     @FXML
+    private Button btnDouble;
+
+    @FXML
     private Button btnReplay;
 
     @FXML
@@ -135,6 +138,7 @@ public class LocalMultiplayerController {
 
     @FXML
     void onHit(ActionEvent event) {
+        btnDouble.setDisable(true);
         engine.hitJugador();
         showHand(engine.getJugador(), hboxCardsPlayer1);
 
@@ -142,13 +146,11 @@ public class LocalMultiplayerController {
 
         if (total == 21) {
             PlayerSession.chips += bet * 2;
-            lblPointsPlayer1.setText("Blackjack!");
             showHand(engine.getCasa(), hboxDealer);
             String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
             lblPlayer1.setText(PlayerSession.playerName + " " + result + " with 21 points");
             lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
-            btnHit.setDisable(true);
-            btnStand.setDisable(true);
+            onStand(null);
             return;
         }
 
@@ -156,6 +158,8 @@ public class LocalMultiplayerController {
         if (!engine.getJugador().IsPlaying) {
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+            btnDouble.setDisable(true);
+            btnReplay.setDisable(false);
             onStand(null);
         }
     }
@@ -166,6 +170,8 @@ public class LocalMultiplayerController {
         lblPointsPlayer1.setText("");
         btnHit.setDisable(true);
         btnStand.setDisable(true);
+        btnDouble.setDisable(true);
+        btnReplay.setDisable(false);
 
         for (int i = 0; i < engine.getComputadoras().size(); i++) {
             Computer cpu = engine.getComputadoras().get(i);
@@ -206,8 +212,24 @@ public class LocalMultiplayerController {
             String cpuResult = GameEngine.EvalHand(engine.getComputadoras().get(i), dealer);
             lblPlayer(i + 1).setText("CPU " + (i + 1) + " " + cpuResult + " with " + engine.getComputadoras().get(i).TotalSum() + " points");
         }
+    }
 
+    @FXML
+    void onDouble(ActionEvent event) {
+        PlayerSession.chips -= bet;
+        engine.hitJugador();
+        showHand(engine.getJugador(), hboxCardsPlayer1);
 
+        lblPointsPlayer1.setText("" + engine.getJugador().TotalSum());
+        if (!engine.getJugador().IsPlaying) {
+            btnHit.setDisable(true);
+            btnStand.setDisable(true);
+            btnDouble.setDisable(true);
+            btnReplay.setDisable(false);
+
+            doubleGame(null);
+        }
+        doubleGame(null);
     }
 
     @FXML
@@ -222,9 +244,9 @@ public class LocalMultiplayerController {
 
     @FXML
     void onAddPlayer(ActionEvent event) {
+
         if (!vboxContainerPlayer2.isVisible()) {
             vboxContainerPlayer2.setVisible(true);
-
             numPlayers++;
         } else if (!vboxContainerPlayer3.isVisible()) {
             vboxContainerPlayer3.setVisible(true);
@@ -232,7 +254,6 @@ public class LocalMultiplayerController {
             numPlayers++;
         } else if (!vboxContainerPlayer4.isVisible()) {
             vboxContainerPlayer4.setVisible(true);
-
             numPlayers++;
         }
         startGame();
@@ -250,7 +271,6 @@ public class LocalMultiplayerController {
             numPlayers--;
         } else if (vboxContainerPlayer2.isVisible()) {
             vboxContainerPlayer2.setVisible(false);
-
             numPlayers--;
         }
 
@@ -258,9 +278,19 @@ public class LocalMultiplayerController {
     }
 
     private void startGame() {
-
+        btnRemovePlayer.setDisable(true);
+        if (vboxContainerPlayer2.isVisible()) {
+            btnRemovePlayer.setDisable(false);
+        }
+        btnAddPlayer.setDisable(false);
+        if (vboxContainerPlayer4.isVisible()) {
+            btnAddPlayer.setDisable(true);
+        }
         btnHit.setDisable(false);
         btnStand.setDisable(false);
+        btnDouble.setDisable(false);
+        btnReplay.setDisable(true);
+
         engine = new GameEngine();
         engine.excecuteGame(numPlayers);
         showHand(engine.getJugador(), hboxCardsPlayer1);
@@ -270,18 +300,25 @@ public class LocalMultiplayerController {
         if (PlayerSession.chips < bet) {
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+            btnReplay.setDisable(true);
+            btnDouble.setDisable(true);
         }
 
         lblChipsP1.setText("Chips: " + PlayerSession.chips);
         lblBetP1.setText("Bet: " + bet);
+
+        if (PlayerSession.chips < bet * 2) {
+            btnDouble.setDisable(true);
+        }
 
         if (PlayerSession.chips >= bet) {
             PlayerSession.chips -= bet;
         } else {
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+            btnReplay.setDisable(true);
+            btnDouble.setDisable(true);
         }
-
 
         for (int i = 1; i < numPlayers; i++) {
 
@@ -298,6 +335,25 @@ public class LocalMultiplayerController {
 
         hiddenDealer(engine.getCasa(), hboxDealer);
         lblDealer.setText("Dealer");
+
+        if (engine.gameShouldEndImmediately()) {
+            showHand(engine.getCasa(), hboxDealer);
+            String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
+
+            if (engine.getJugador().IsBlackjack()) {
+                lblPlayer1.setText("Blackjack!");
+                PlayerSession.chips += bet * 3;
+            } else {
+                lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
+            }
+
+            if (engine.getCasa().IsBlackjack()) {
+                lblDealer.setText("Blackjack!");
+            } else {
+                lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
+            }
+            onStand(null);
+        }
     }
 
     private void showHand(Hand hand, HBox destination) {
@@ -310,19 +366,6 @@ public class LocalMultiplayerController {
             destination.getChildren().add(imgv);
         }
     }
-
-    /*
-    private void hiddenHand(Hand hand, HBox destination) {
-        destination.getChildren().clear();
-        Image hiddenImg = new Image(getClass().getResource("/images/HIDDEN.png").toExternalForm());
-        for (int i = 0; i < hand.getHand().size(); i++) {
-            ImageView imgv = new ImageView(hiddenImg);
-            imgv.setFitWidth(80);
-            imgv.setPreserveRatio(true);
-            destination.getChildren().add(imgv);
-        }
-    }
-     */
 
     private void hiddenDealer(House house, HBox destination) {
         destination.getChildren().clear();
@@ -341,6 +384,56 @@ public class LocalMultiplayerController {
         hiddenCard.setFitWidth(80);
         hiddenCard.setPreserveRatio(true);
         destination.getChildren().add(hiddenCard);
+    }
+
+    @FXML
+    void doubleGame(ActionEvent event) {
+
+        lblPointsPlayer1.setText("");
+        btnHit.setDisable(true);
+        btnStand.setDisable(true);
+        btnDouble.setDisable(true);
+        btnReplay.setDisable(false);
+
+        for (int i = 0; i < engine.getComputadoras().size(); i++) {
+            Computer cpu = engine.getComputadoras().get(i);
+            while (cpu.IsPlaying && cpu.Plays()) {
+                cpu.addCard(engine.getDeck().dealCard());
+            }
+            showHand(cpu, getHboxForCPU(i + 1));
+            lblPoints(i + 1).setText("" + cpu.TotalSum());
+        }
+
+        House dealer = engine.getCasa();
+
+        while (dealer.IsPlaying && dealer.Plays()) {
+            dealer.addCard(engine.getDeck().dealCard());
+        }
+
+        showHand(dealer, hboxDealer);
+
+        String result = GameEngine.EvalHand(engine.getJugador(), dealer);
+        if (result.contains("W")) {
+            PlayerSession.chips += bet * 4;
+        } else if (result.contains("D")) {
+            PlayerSession.chips += bet * 2;
+        }
+
+        lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
+        lblDealer.setText("Dealer has " + dealer.TotalSum() + " points");
+
+        for (int i = 0; i < engine.getComputadoras().size(); i++) {
+            String resultCpu = GameEngine.EvalHand(engine.getComputadoras().get(i), engine.getCasa());
+
+            if (resultCpu.contains("W")) {
+                PlayerSession.chipsCpu.set(i, PlayerSession.chipsCpu.get(i) + bet * 2);
+            } else if (resultCpu.contains("D")) {
+                PlayerSession.chipsCpu.set(i, PlayerSession.chipsCpu.get(i) + bet);
+            }
+
+            String cpuResult = GameEngine.EvalHand(engine.getComputadoras().get(i), dealer);
+            lblPlayer(i + 1).setText("CPU " + (i + 1) + " " + cpuResult + " with " + engine.getComputadoras().get(i).TotalSum() + " points");
+        }
     }
 
     private HBox getHboxForCPU(int i) {

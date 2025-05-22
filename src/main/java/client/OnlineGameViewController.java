@@ -16,6 +16,9 @@ public class OnlineGameViewController {
     private ClientConnection connection;
 
     @FXML
+    private Button btnDouble;
+
+    @FXML
     private Button btnBackToMenu;
 
     @FXML
@@ -139,6 +142,11 @@ public class OnlineGameViewController {
         connection.send("REPLAY");
     }
 
+    @FXML
+    void onDouble(ActionEvent event) {
+        connection.send("DOUBLE");
+    }
+
     private void handleServerMessage(String msg) {
         if (msg.startsWith("CARD")) {
             String[] parts = msg.split(" "); // ["CARD", "P1", "AH"]
@@ -181,6 +189,16 @@ public class OnlineGameViewController {
 
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+        } else if (msg.startsWith("TURN")) {
+            if (msg.contains("NO_DOUBLE")) {
+                btnHit.setDisable(false);
+                btnStand.setDisable(false);
+                btnDouble.setDisable(true);
+            } else {
+                btnHit.setDisable(false);
+                btnStand.setDisable(false);
+                btnDouble.setDisable(false);
+            }
         }
     }
 }

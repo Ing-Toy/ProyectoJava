@@ -118,7 +118,7 @@ public class GameEngine {
     }
     public static String EvalHand(Hand mano, Hand casamano) {
         String state;
-        if (mano.IsPlaying && casamano.IsPlaying) {
+        if ((mano.IsPlaying && casamano.IsPlaying) && !casamano.IsBlackjack()) {
             if ((mano.TotalSum()<casamano.TotalSum())) {
                 state ="[Lose]";
             } else if (mano.TotalSum() == casamano.TotalSum()) {
@@ -164,9 +164,5 @@ public class GameEngine {
 
     public boolean gameShouldEndImmediately() {
         return Jugador.IsBlackjack() || Casa.IsBlackjack();
-    }
-
-    public boolean gameShouldEndImmediately2p() {
-        return Jugador.IsBlackjack() || Casa.IsBlackjack() || Computadoras.get(0).IsBlackjack();
     }
 }

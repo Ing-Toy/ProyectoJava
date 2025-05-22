@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/LocalMultiplayerStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.LocalMultiplayerController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../style/LocalMultiplayerStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.LocalMultiplayerController">
     <children>
         <Label fx:id="lblDealer" text="Dealer" />
         <HBox fx:id="hboxDealer" prefHeight="100.0" prefWidth="200.0" />
@@ -66,6 +68,7 @@
         <HBox fx:id="hboxGambleButtons" prefHeight="100.0" prefWidth="200.0">
             <children>
                 <Button fx:id="btnStand" mnemonicParsing="false" onAction="#onStand" text="Stand" />
+            <Button fx:id="btnDouble" mnemonicParsing="false" onAction="#onDouble" text="Double" />
                 <Button fx:id="btnHit" mnemonicParsing="false" onAction="#onHit" text="Hit" />
             </children>
         </HBox>

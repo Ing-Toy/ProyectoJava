@@ -15,6 +15,7 @@
       <HBox fx:id="hboxControls" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnStand" mnemonicParsing="false" onAction="#onStand" text="Stand" />
+            <Button fx:id="btnDouble" mnemonicParsing="false" onAction="#onDouble" text="Double" />
             <Button fx:id="btnHit" mnemonicParsing="false" onAction="#onHit" text="Hit" />
          </children>
       </HBox>
@@ -26,9 +27,9 @@
       </VBox>
       <HBox fx:id="hboxBackToMenu" prefWidth="200.0">
          <children>
-            <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
             <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Deal cards" />
+            <Label fx:id="spacerBackToMenu" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
          </children>
       </HBox>
       <Label fx:id="spacer" />

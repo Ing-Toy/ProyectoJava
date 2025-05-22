@@ -32,6 +32,9 @@ public class OneGamePageController {
     private Label lblDealer;
 
     @FXML
+    private Button btnDouble;
+
+    @FXML
     private Button btnHit;
 
     @FXML
@@ -42,6 +45,9 @@ public class OneGamePageController {
 
     @FXML
     private HBox hboxDealer;
+
+    @FXML
+    private Button btnReplay;
 
     private GameEngine engine = new GameEngine();
 
@@ -90,6 +96,7 @@ public class OneGamePageController {
 
     @FXML
     void onHit() {
+        btnDouble.setDisable(true);
         engine.hitJugador();
         showHand(engine.getJugador(), hboxPlayer);
 
@@ -100,9 +107,11 @@ public class OneGamePageController {
             showHand(engine.getCasa(), hboxDealer);
             String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
             lblPlayer1.setText(PlayerSession.playerName + " " + result + " with 21 points");
+            lblPoints.setText("" + engine.getJugador().TotalSum());
             lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+            btnReplay.setDisable(false);
             return;
         }
 
@@ -110,6 +119,7 @@ public class OneGamePageController {
         if (!engine.getJugador().IsPlaying) {
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+            btnReplay.setDisable(false);
 
             onStand();
         }
@@ -120,6 +130,8 @@ public class OneGamePageController {
         lblPoints.setText("");
         btnHit.setDisable(true);
         btnStand.setDisable(true);
+        btnDouble.setDisable(true);
+        btnReplay.setDisable(false);
 
         House dealer = engine.getCasa();
 
@@ -147,6 +159,24 @@ public class OneGamePageController {
         startPlaying();
     }
 
+    @FXML
+    void onDouble(ActionEvent event) {
+
+        PlayerSession.chips -= bet;
+        engine.hitJugador();
+        showHand(engine.getJugador(), hboxPlayer);
+
+        lblPoints.setText("" + engine.getJugador().TotalSum());
+        if (!engine.getJugador().IsPlaying) {
+            btnHit.setDisable(true);
+            btnStand.setDisable(true);
+            btnReplay.setDisable(false);
+
+            doubleGame();
+        }
+        doubleGame();
+    }
+
     private void startPlaying() {
 
         engine = new GameEngine();
@@ -159,16 +189,8 @@ public class OneGamePageController {
         lblDealer.setText("Dealer");
         lblPoints.setText("" + engine.getJugador().TotalSum());
 
-        if (PlayerSession.chips < bet) {
-            btnHit.setDisable(true);
-            btnStand.setDisable(true);
-            return;
-        }
-
         lblChips.setText("Chips: " + PlayerSession.chips);
         lblBet.setText("Bet: " + bet);
-
-        PlayerSession.chips -= bet;
 
         if (engine.gameShouldEndImmediately()) {
             showHand(engine.getCasa(), hboxDealer);
@@ -176,7 +198,7 @@ public class OneGamePageController {
 
             if (engine.getJugador().IsBlackjack()) {
                 lblPlayer1.setText("Blackjack!");
-                PlayerSession.chips += bet * 2;
+                PlayerSession.chips += bet * 3;
             } else {
                 lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
             }
@@ -189,10 +211,57 @@ public class OneGamePageController {
 
             btnHit.setDisable(true);
             btnStand.setDisable(true);
+            btnDouble.setDisable(true);
+            btnReplay.setDisable(false);
+
             return;
         }
 
         btnHit.setDisable(false);
         btnStand.setDisable(false);
+        btnDouble.setDisable(false);
+        btnReplay.setDisable(true);
+
+        if (PlayerSession.chips < bet) {
+            btnHit.setDisable(true);
+            btnStand.setDisable(true);
+            btnReplay.setDisable(true);
+            btnDouble.setDisable(true);
+            return;
+        } else if (PlayerSession.chips < bet * 2) {
+            btnDouble.setDisable(true);
+        }
+
+        PlayerSession.chips -= bet;
+
+    }
+
+    void doubleGame() {
+
+        lblPoints.setText("");
+        btnHit.setDisable(true);
+        btnStand.setDisable(true);
+        btnDouble.setDisable(true);
+        btnReplay.setDisable(false);
+
+        House dealer = engine.getCasa();
+
+        while (dealer.IsPlaying && dealer.Plays()) {
+            dealer.addCard(engine.getDeck().dealCard());
+        }
+
+        showHand(dealer, hboxDealer);
+
+
+
+        String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
+        if (result.contains("W")) {
+            PlayerSession.chips += bet * 4;
+        } else if (result.contains("D")) {
+            PlayerSession.chips += bet * 2;
+        }
+
+        lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
+        lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
     }
 }

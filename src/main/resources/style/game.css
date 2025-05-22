@@ -128,9 +128,32 @@
     -fx-padding: 2 4 3 4;
 }
 
+#btnDouble
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 150px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(19, 126, 0);
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnDouble:hover
+{
+    -fx-background-color: rgb(19, 255, 0);
+    -fx-text-fill: black;
+}
+
+#btnDouble:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
 #hboxBackToMenu
 {
-    -fx-padding: 3;
+    -fx-alignment: center;
+    -fx-spacing: 10;
 }
 
 #btnBackToMenu
@@ -200,4 +223,9 @@
     -fx-alignment: center;
     -fx-font-size: 15px;
     -fx-padding: 5px;
+}
+
+#spacerBackToMenu
+{
+    -fx-pref-width: 50;
 }
