@@ -59,6 +59,7 @@ public class OneGamePageController {
 
     @FXML
     public void initialize() {
+        PlaceBetsScreenController controlador = MainWindow.app.setSceneWithController("/client/PlaceBetsScreenController.fxml");
         startPlaying();
         lblPoints.setText("" + engine.getJugador().TotalSum());
     }
@@ -102,17 +103,9 @@ public class OneGamePageController {
 
         int total = engine.getJugador().TotalSum();
 
-        if (total == 21) {
-            PlayerSession.chips += bet * 2;
+        if (total == 21) { // Que tenga 21 no significa que gane inmediatamente
             showHand(engine.getCasa(), hboxDealer);
-            String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
-            lblPlayer1.setText(PlayerSession.playerName + " " + result + " with 21 points");
-            lblPoints.setText("" + engine.getJugador().TotalSum());
-            lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
-            btnHit.setDisable(true);
-            btnStand.setDisable(true);
-            btnReplay.setDisable(false);
-            return;
+            onStand();
         }
 
         lblPoints.setText("" + engine.getJugador().TotalSum());
@@ -135,13 +128,19 @@ public class OneGamePageController {
 
         House dealer = engine.getCasa();
 
+        if (!engine.getJugador().IsPlaying){
+            showHand(dealer, hboxDealer);
+            String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
+            lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
+            lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
+            return;
+        }
+
         while (dealer.IsPlaying && dealer.Plays()) {
             dealer.addCard(engine.getDeck().dealCard());
         }
 
         showHand(dealer, hboxDealer);
-
-
 
         String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
         if (result.contains("W")) {
@@ -156,6 +155,7 @@ public class OneGamePageController {
 
     @FXML
     void onReplay() {
+        //Aquí se añade la pantalla para poner apuestas
         startPlaying();
     }
 

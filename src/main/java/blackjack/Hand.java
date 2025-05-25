@@ -20,9 +20,9 @@ public class Hand { //Set of Cards
         return this.hand;
     }
     public boolean IsBlackjack() {
-        if ((this.hand.get(0).getValue() == 1) && (this.hand.get(1).getValue() > 10)) {
+        if ((this.hand.get(0).getValue() == 1) && (this.hand.get(1).value > 10)) {
             return true;
-        } else if ((this.hand.get(1).getValue() == 1) && (this.hand.get(0).getValue() > 10)) {
+        } else if ((this.hand.get(1).getValue() == 1) && (this.hand.get(0).value > 10)) {
             return true;
         } else {
             return false;

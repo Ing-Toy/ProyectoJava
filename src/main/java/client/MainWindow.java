@@ -39,6 +39,26 @@ public class MainWindow extends Application {
         }
     }
 
+    public <T> T setSceneWithController(String path){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Scene scene = new Scene(loader.load(), 600, 400);
+            stageWindow.setScene(scene);
+            stageWindow.setResizable(false);
+
+            if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage")) {
+                stageWindow.setMaximized(true);
+            } else {
+                stageWindow.setMaximized(false); // asegurarte que otras no lo estén
+            }
+
+            return loader.getController();
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         launch();
     }

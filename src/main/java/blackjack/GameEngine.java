@@ -18,16 +18,17 @@ public class GameEngine {
 
         /* Your code */
         //Creating Players, House and Set of computers
-        int numplayers = numPlayers + 1;
+        int numplayers = numPlayers;
         random = new Random();
         if ((numplayers >=2) && (numplayers <=5)) {
             Casa = new House();
             Jugador = new Player();
             Computadoras = new ArrayList<Computer>();
-            for (int numcomputers = 0;numcomputers < (numplayers-2);numcomputers++){
+            for (int numcomputers = 0;numcomputers < (numplayers-2);numcomputers++){ //Ojo aqui porque se considera el jugador y la casa como jugador
                 Computer AItoadd = new Computer(random);
                 Computadoras.add(AItoadd);
             }
+            //Reparticion inicial de Cartas. Puede que sirva en multijugador
             for (int indexcarddealt = 0;indexcarddealt <(numplayers*2);indexcarddealt++) {
                 if ((indexcarddealt == 0) || (indexcarddealt == (numplayers))) {
                     Jugador.addCard(deck.dealCard());

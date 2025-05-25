@@ -12,7 +12,7 @@ public class LocalOptionsPageController {
 
     @FXML
     void enterGameComs(ActionEvent event) {
-        MainWindow.app.setScene("/client/LocalMultiplayer.fxml");
+        MainWindow.app.setScene("/client/PlaceBetsScreen.fxml");
     }
 
     @FXML

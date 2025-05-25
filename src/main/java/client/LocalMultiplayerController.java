@@ -10,12 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import static client.PlaceBetsScreenController.cantidadcomputadoras;
 import static client.PlayerSession.*;
 
 public class LocalMultiplayerController {
 
-    GameEngine engine = new GameEngine();
-    private int numPlayers = 1;
+    GameEngine engine;
+    private int numPlayers = 2;
 
     @FXML
     private Label lblBetP1;
@@ -130,10 +131,33 @@ public class LocalMultiplayerController {
 
     @FXML
     public void initialize() {
-        vboxContainerPlayer2.setVisible(false);
-        vboxContainerPlayer3.setVisible(false);
-        vboxContainerPlayer4.setVisible(false);
-        startGame();
+        numPlayers += cantidadcomputadoras;
+        System.out.println("Cantidad de jugadores:"+numPlayers);
+        switch (numPlayers){
+            case 3:
+                vboxContainerPlayer2.setVisible(true);
+                vboxContainerPlayer3.setVisible(false);
+                vboxContainerPlayer4.setVisible(false);
+                break;
+            case 4:
+                vboxContainerPlayer2.setVisible(true);
+                vboxContainerPlayer3.setVisible(true);
+                vboxContainerPlayer4.setVisible(false);
+                break;
+            case 5:
+                vboxContainerPlayer2.setVisible(true);
+                vboxContainerPlayer3.setVisible(true);
+                vboxContainerPlayer4.setVisible(true);
+                break;
+            default:
+                vboxContainerPlayer2.setVisible(false);
+                vboxContainerPlayer3.setVisible(false);
+                vboxContainerPlayer4.setVisible(false);
+                break;
+        }
+        iniciarjuego(numPlayers);
+        btnAddPlayer.setDisable(true);
+        btnRemovePlayer.setDisable(true);
     }
 
     @FXML
@@ -212,6 +236,7 @@ public class LocalMultiplayerController {
             String cpuResult = GameEngine.EvalHand(engine.getComputadoras().get(i), dealer);
             lblPlayer(i + 1).setText("CPU " + (i + 1) + " " + cpuResult + " with " + engine.getComputadoras().get(i).TotalSum() + " points");
         }
+
     }
 
     @FXML
@@ -239,7 +264,7 @@ public class LocalMultiplayerController {
 
     @FXML
     void onReplay(ActionEvent event) {
-        startGame();
+        MainWindow.app.setScene("/client/PlaceBetsScreen.fxml");
     }
 
     @FXML
@@ -275,6 +300,58 @@ public class LocalMultiplayerController {
         }
 
         startGame();
+    }
+
+    private void iniciarjuego(int playercant){
+        engine = new GameEngine();
+        System.out.println("Jugadores: "+playercant);
+        engine.excecuteGame(playercant);
+        showHand(engine.getJugador(), hboxCardsPlayer1);
+        lblPlayer1.setText(PlayerSession.playerName);
+        lblPointsPlayer1.setText("" + engine.getJugador().TotalSum());
+        lblChipsP1.setText("Chips: " + PlayerSession.chips);
+        lblBetP1.setText("Bet: " + bet);
+
+        if (PlayerSession.chips < bet * 2) {
+            btnDouble.setDisable(true);
+        }
+
+        for (int i = 1; i <= cantidadcomputadoras; i++) {
+            System.out.println("ciclo for: "+i);
+
+            if (PlayerSession.chipsCpu.get(i - 1) >= bet) {
+                PlayerSession.chipsCpu.set(i - 1, PlayerSession.chipsCpu.get(i - 1) - bet);
+            }
+
+            showHand(engine.getComputadoras().get(i - 1), getHboxForCPU(i));
+            lblPoints(i).setText("");
+            lblPlayer(i).setText("CPU " + (i));
+            lblChipsP(i).setText("Chips: " + PlayerSession.chipsCpu.get(i - 1));
+            lblBetP(i).setText("Bet: " + bet);
+        }
+
+        hiddenDealer(engine.getCasa(), hboxDealer);
+        lblDealer.setText("Dealer");
+        btnReplay.setDisable(true);
+
+        if (engine.gameShouldEndImmediately()) {
+            showHand(engine.getCasa(), hboxDealer);
+            String result = GameEngine.EvalHand(engine.getJugador(), engine.getCasa());
+
+            if (engine.getJugador().IsBlackjack()) {
+                lblPlayer1.setText("Blackjack!");
+                PlayerSession.chips += bet * 3;
+            } else {
+                lblPlayer1.setText(PlayerSession.playerName + " " + result + " with " + engine.getJugador().TotalSum() + " points");
+            }
+
+            if (engine.getCasa().IsBlackjack()) {
+                lblDealer.setText("Blackjack!");
+            } else {
+                lblDealer.setText("Dealer has " + engine.getCasa().TotalSum() + " points");
+            }
+            onStand(null);
+        }
     }
 
     private void startGame() {

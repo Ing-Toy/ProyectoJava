@@ -25,7 +25,7 @@ public class InitialPageController {
 
     @FXML
     void enterLocalOptions(ActionEvent event) {
-        MainWindow.app.setScene("/client/LocalOptionsPage.fxml");
+        MainWindow.app.setScene("/client/PlaceBetsScreen.fxml");
     }
 
     @FXML
@@ -39,8 +39,7 @@ public class InitialPageController {
     }
 
     public void initialize() {
-        lblChips.setText("Chips: " + PlayerSession.chips);
-        lblBet.setText("Bet: " + PlayerSession.bet);
+
     }
 
     @FXML

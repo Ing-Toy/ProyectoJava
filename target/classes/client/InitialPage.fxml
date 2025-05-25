@@ -34,18 +34,6 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <VBox>
-         <children>
-            <Label fx:id="lblChips" text="Chips: " />
-            <HBox fx:id="hbox" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btnMinus" mnemonicParsing="false" onAction="#onMinus" text="-" />
-                  <Label fx:id="lblBet" text="Bet: " />
-                  <Button fx:id="btnPlus" mnemonicParsing="false" onAction="#onPlus" text="+" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
    </children>
    <padding>
       <Insets top="10.0" />
