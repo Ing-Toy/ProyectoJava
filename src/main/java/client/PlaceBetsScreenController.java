@@ -2,14 +2,10 @@ package client;
 
 import javafx.fxml.FXML;
 
-import java.awt.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.List;
 
 public class PlaceBetsScreenController {
     private boolean multijugador;
@@ -17,43 +13,43 @@ public class PlaceBetsScreenController {
     private int cantidadapuesta;
 
     @FXML
-    private Button ficha1;
+    private Button btnFicha1; //no se usa
 
     @FXML
-    private Button ficha10;
+    private Button btnFicha10; //no se usa
 
     @FXML
-    private Button ficha25;
+    private Button btnFicha25; //no se usa
 
     @FXML
-    private Button ficha50;
+    private Button btnFicha50; //no se usa
 
     @FXML
-    private Button ficha100;
+    private Button btnFicha100; //no se usa
 
     @FXML
-    private Button Back;
+    private Button btnBack; //no se usa
 
     @FXML
-    private Button startgame;
+    private Button btnStartGame; //no se usa
 
     @FXML
-    private Button comp0;
+    private Button btnComp0;
 
     @FXML
-    private Button comp1;
+    private Button btnComp1;
 
     @FXML
-    private Button comp2;
+    private Button btnComp2;
 
     @FXML
-    private Button comp3;
+    private Button btnComp3;
 
     @FXML
-    private TextField apuesta;
+    private TextField txtFieldApuesta;
 
     @FXML
-    private Label principal;
+    private Label lblPrincipal;
 
     @FXML
     private Label moneyleft;
@@ -61,43 +57,43 @@ public class PlaceBetsScreenController {
     @FXML
     public void initialize(){
         choosecomp(cantidadcomputadoras);
-        apuesta.setText(Integer.toString(PlayerSession.bet));
+        txtFieldApuesta.setText(Integer.toString(PlayerSession.bet));
         stablishmoney();
     }
 
     @FXML
     void comp0(ActionEvent event){
-        comp0.setDisable(true);
-        comp1.setDisable(false);
-        comp2.setDisable(false);
-        comp3.setDisable(false);
+        btnComp0.setDisable(true);
+        btnComp1.setDisable(false);
+        btnComp2.setDisable(false);
+        btnComp3.setDisable(false);
         cantidadcomputadoras = 0;
     }
 
     @FXML
     void comp1(ActionEvent event){
-        comp0.setDisable(false);
-        comp1.setDisable(true);
-        comp2.setDisable(false);
-        comp3.setDisable(false);
+        btnComp0.setDisable(false);
+        btnComp1.setDisable(true);
+        btnComp2.setDisable(false);
+        btnComp3.setDisable(false);
         cantidadcomputadoras = 1;
     }
 
     @FXML
     void comp2(ActionEvent event){
-        comp0.setDisable(false);
-        comp1.setDisable(false);
-        comp2.setDisable(true);
-        comp3.setDisable(false);
+        btnComp0.setDisable(false);
+        btnComp1.setDisable(false);
+        btnComp2.setDisable(true);
+        btnComp3.setDisable(false);
         cantidadcomputadoras = 2;
     }
 
     @FXML
     void comp3(ActionEvent event){
-        comp0.setDisable(false);
-        comp1.setDisable(false);
-        comp2.setDisable(false);
-        comp3.setDisable(true);
+        btnComp0.setDisable(false);
+        btnComp1.setDisable(false);
+        btnComp2.setDisable(false);
+        btnComp3.setDisable(true);
         cantidadcomputadoras= 3;
     }
 
@@ -138,7 +134,7 @@ public class PlaceBetsScreenController {
 
     private void sumBet(int cantidad){
         int cantidadfinal = cantidadapuesta + cantidad;
-        apuesta.setText(Integer.toString(cantidadfinal));
+        txtFieldApuesta.setText(Integer.toString(cantidadfinal));
         cantidadapuesta = cantidadfinal;
     }
 
@@ -149,31 +145,31 @@ public class PlaceBetsScreenController {
     private void choosecomp(int numcomp){
         switch (numcomp){
             case 1:
-                comp0.setDisable(false);
-                comp1.setDisable(true);
-                comp2.setDisable(false);
-                comp3.setDisable(false);
+                btnComp0.setDisable(false);
+                btnComp1.setDisable(true);
+                btnComp2.setDisable(false);
+                btnComp3.setDisable(false);
                 cantidadcomputadoras = 1;
                 break;
             case 2:
-                comp0.setDisable(false);
-                comp1.setDisable(false);
-                comp2.setDisable(true);
-                comp3.setDisable(false);
+                btnComp0.setDisable(false);
+                btnComp1.setDisable(false);
+                btnComp2.setDisable(true);
+                btnComp3.setDisable(false);
                 cantidadcomputadoras = 2;
                 break;
             case 3:
-                comp0.setDisable(false);
-                comp1.setDisable(false);
-                comp2.setDisable(false);
-                comp3.setDisable(true);
+                btnComp0.setDisable(false);
+                btnComp1.setDisable(false);
+                btnComp2.setDisable(false);
+                btnComp3.setDisable(true);
                 cantidadcomputadoras= 3;
                 break;
             default:
-                comp0.setDisable(true);
-                comp1.setDisable(false);
-                comp2.setDisable(false);
-                comp3.setDisable(false);
+                btnComp0.setDisable(true);
+                btnComp1.setDisable(false);
+                btnComp2.setDisable(false);
+                btnComp3.setDisable(false);
                 cantidadcomputadoras = 0;
                 break;
         }
@@ -182,19 +178,19 @@ public class PlaceBetsScreenController {
     private boolean validbet(){ //Checa si es valida y si es, establece su cantidad desde un principio
         int tempbet;
         try{
-            tempbet = Integer.parseInt(apuesta.getText());
+            tempbet = Integer.parseInt(txtFieldApuesta.getText());
             if (tempbet <= 0){
-                principal.setText("Please insert a valid bet.");
+                lblPrincipal.setText("Please insert a valid bet.");
                 return false;
             } else if (tempbet > PlayerSession.chips){
-                principal.setText("Not enough chips!");
+                lblPrincipal.setText("Not enough chips!");
                 return false;
             } else {
                 this.cantidadapuesta = tempbet;
                 return true;
             }
         } catch (Exception e){
-            principal.setText("Please put a number!");
+            lblPrincipal.setText("Please put a number!");
             return false;
         }
     }

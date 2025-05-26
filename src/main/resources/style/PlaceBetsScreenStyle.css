@@ -1,0 +1,288 @@
+.root
+{
+    -fx-background-color: rgb(130, 0, 0);
+    -fx-background-size: cover;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+#lblPrincipal
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#txtFieldApuesta
+{
+    -fx-pref-width: 100px;
+}
+
+#hboxApuestas
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#btnFicha1
+{
+    -fx-text-fill: blue;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(200, 200, 200);
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnFicha1:hover
+{
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+}
+
+#btnFicha1:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnFicha10
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(126, 0, 0);
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnFicha10:hover
+{
+    -fx-background-color: red;
+    -fx-text-fill: black;
+}
+
+#btnFicha10:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnFicha25
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(19, 126, 0);
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnFicha25:hover
+{
+    -fx-background-color: rgb(19, 255, 0);
+    -fx-text-fill: black;
+}
+
+#btnFicha25:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnFicha50
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: blue;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnFicha50:hover
+{
+    -fx-background-color: rgb(0, 183, 255);
+    -fx-text-fill: black;
+}
+
+#btnFicha50:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnFicha100
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: black;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnFicha100:hover
+{
+    -fx-background-color: rgb(80, 80, 80);
+}
+
+#btnFicha100:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#hboxMenu
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#btnBack
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 150px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: black;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnBack:hover
+{
+    -fx-background-color: rgb(80, 80, 80);
+}
+
+#btnBack:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnStartGame
+{
+    -fx-text-fill: Black;
+    -fx-pref-width: 150px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnStartGame:hover
+{
+    -fx-font-weight: bold;
+}
+
+#btnStartGame:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#lblComputers
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+}
+
+#hboxComputers
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#btnComp0
+{
+    -fx-text-fill: black;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnComp0:hover
+{
+    -fx-font-weight: bold;
+}
+
+#btnComp0:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnComp1
+{
+    -fx-text-fill: black;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnComp1:hover
+{
+    -fx-font-weight: bold;
+}
+
+#btnComp1:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnComp2
+{
+    -fx-text-fill: black;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnComp2:hover
+{
+    -fx-font-weight: bold;
+}
+
+#btnComp2:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnComp3
+{
+    -fx-text-fill: black;
+    -fx-pref-width: 50px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnComp3:hover
+{
+    -fx-font-weight: bold;
+}
+
+#btnComp3:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
