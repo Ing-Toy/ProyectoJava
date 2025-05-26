@@ -76,9 +76,6 @@
             <children>
                 <Button fx:id="btnBackToMenu" mnemonicParsing="false" onAction="#backToMenu" text="Back to menu" />
                 <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#onReplay" text="Deal cards" />
-            <Label prefWidth="200.0" />
-            <Button fx:id="btnAddPlayer" mnemonicParsing="false" onAction="#onAddPlayer" text="Add player" />
-            <Button fx:id="btnRemovePlayer" mnemonicParsing="false" onAction="#onRemovePlayer" text="Remove player" />
             </children>
         </HBox>
         <Label fx:id="spacer" />

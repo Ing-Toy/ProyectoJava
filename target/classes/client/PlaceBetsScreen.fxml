@@ -19,7 +19,7 @@
             <Button fx:id="btnFicha100" mnemonicParsing="false" onAction="#sumarficha100" text="100" />
          </children>
       </HBox>
-      <Label fx:id="moneyleft" />
+      <Label fx:id="lblMoneyLeft" />
       <HBox fx:id="hboxMenu" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backtomenu" text="Back" />

@@ -52,7 +52,7 @@ public class PlaceBetsScreenController {
     private Label lblPrincipal;
 
     @FXML
-    private Label moneyleft;
+    private Label lblMoneyLeft;
 
     @FXML
     public void initialize(){
@@ -139,7 +139,7 @@ public class PlaceBetsScreenController {
     }
 
     private void stablishmoney(){
-        moneyleft.setText("Chips left: "+PlayerSession.chips);
+        lblMoneyLeft.setText("Chips left: "+PlayerSession.chips);
     }
 
     private void choosecomp(int numcomp){

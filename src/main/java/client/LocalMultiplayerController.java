@@ -43,12 +43,6 @@ public class LocalMultiplayerController {
     private Label lblChipsP4;
 
     @FXML
-    private Button btnAddPlayer;
-
-    @FXML
-    private Button btnRemovePlayer;
-
-    @FXML
     private Button btnBackToMenu;
 
     @FXML
@@ -156,8 +150,6 @@ public class LocalMultiplayerController {
                 break;
         }
         iniciarjuego(numPlayers);
-        btnAddPlayer.setDisable(true);
-        btnRemovePlayer.setDisable(true);
     }
 
     @FXML
@@ -355,14 +347,7 @@ public class LocalMultiplayerController {
     }
 
     private void startGame() {
-        btnRemovePlayer.setDisable(true);
-        if (vboxContainerPlayer2.isVisible()) {
-            btnRemovePlayer.setDisable(false);
-        }
-        btnAddPlayer.setDisable(false);
-        if (vboxContainerPlayer4.isVisible()) {
-            btnAddPlayer.setDisable(true);
-        }
+
         btnHit.setDisable(false);
         btnStand.setDisable(false);
         btnDouble.setDisable(false);

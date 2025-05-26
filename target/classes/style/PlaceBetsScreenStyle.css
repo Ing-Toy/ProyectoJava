@@ -286,3 +286,12 @@
 {
     -fx-padding: 2 4 3 4;
 }
+#lblMoneyLeft
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-padding: 5px;
+}
