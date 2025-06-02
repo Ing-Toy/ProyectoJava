@@ -67,4 +67,7 @@ public class Hand { //Set of Cards
             return sentence.append("("+Integer.toString(this.TotalSum())+") - Bust!");
         }
     }
+    public void ClearHand(){
+        hand.clear();
+    }
 }

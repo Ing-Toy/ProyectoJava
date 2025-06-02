@@ -3,6 +3,9 @@ package blackjack;
 import java.util.Scanner;
 
 public class Player extends Hand {
+    public String name;
+    public int bet = 0;
+    public String asiento;
     public void playTurn(Scanner scanner, Deck deck) {
         if (TotalSum() == 21) {
             return;

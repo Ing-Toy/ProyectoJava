@@ -1,14 +1,20 @@
 package client;
 
+import blackjack.Player;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import client.PlayerSession;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PlaceBetsScreenController {
-    private boolean multijugador;
     public static int cantidadcomputadoras = 0;
     private int cantidadapuesta;
 
@@ -52,11 +58,23 @@ public class PlaceBetsScreenController {
     private Label lblPrincipal;
 
     @FXML
+    private Label lblComputers;
+
+    @FXML
     private Label lblMoneyLeft;
 
     @FXML
     public void initialize(){
-        choosecomp(cantidadcomputadoras);
+        if (!PlayerSession.multiplayermode){
+            choosecomp(cantidadcomputadoras);
+        } else{
+            btnComp0.setVisible(false);
+            btnComp1.setVisible(false);
+            btnComp2.setVisible(false);
+            btnComp3.setVisible(false);
+            lblComputers.setVisible(false);
+            btnStartGame.setText("Ready!");
+        }
         txtFieldApuesta.setText(Integer.toString(PlayerSession.bet));
         stablishmoney();
     }
@@ -97,12 +115,82 @@ public class PlaceBetsScreenController {
         cantidadcomputadoras= 3;
     }
 
+    private Player EncontrarJugador(int asiento) {
+        switch (asiento) {
+            case 1:
+                return MultiplayerClientScreenController.asiento1;
+            case 2:
+                return MultiplayerClientScreenController.asiento2;
+            case 3:
+                return MultiplayerClientScreenController.asiento3;
+            case 4:
+                return MultiplayerClientScreenController.asiento4;
+            default:
+                return null;
+        }
+    }
+
+    void AsignarNombres(String linea){
+        Map<Integer,String> FinalResultados = new HashMap<Integer,String>();
+        String jugo = linea.substring(1,linea.length()-1);
+        String[] results = jugo.split(",");
+        for (String resultado: results){
+            String[] AsientoResultado = resultado.split("-");
+            int asiento = Integer.parseInt(AsientoResultado[0]);
+            String resultadofinal = AsientoResultado[1];
+            FinalResultados.put(asiento,resultadofinal);
+        }
+        for (Map.Entry<Integer, String> entrada:FinalResultados.entrySet()) {
+            int asiento = entrada.getKey();
+            String resultado = entrada.getValue();
+            EncontrarJugador(asiento).name = resultado;
+        }
+    }
+
     @FXML
     void onGO(ActionEvent event){
         if (validbet()){
             PlayerSession.chips -= cantidadapuesta;
             PlayerSession.bet = cantidadapuesta;
-            MainWindow.app.setScene("/client/LocalMultiplayer.fxml");
+            if (PlayerSession.multiplayermode){
+
+                PlayerSession.ready = true;
+                PlayerSession.mandarcomando("ready:" + PlayerSession.ready);
+                btnStartGame.setDisable(true);
+                lblComputers.setText("Waiting for other players to be ready...");
+                lblComputers.setVisible(true);
+
+                new Thread(()->{
+                    while (true) {
+                        try{
+                            String[] comando = PlayerSession.recibircomando();
+                            System.out.println("Comando recibido en PlaceBetsScreen: "+comando[0]);
+
+                            if (comando[0].equalsIgnoreCase("empezar")){
+                                Platform.runLater(()->{
+                                    MainWindow.app.setScene("/client/MultiplayerClientScreen.fxml");
+                                });
+                                return;
+                            } else {
+                                Platform.runLater(()->{
+                                    lblPrincipal.setText("Teniendo problemas con servidor!");
+                                });
+                                System.out.println("Comando recibido y no identificado: "+comando[0]);
+                            }
+                            Thread.sleep(120);
+                        } catch (IOException e) {
+                            Platform.runLater(()->{
+                                lblPrincipal.setText("Problema de red");
+                            });
+                            throw new RuntimeException(e);
+                        } catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            } else{
+                MainWindow.app.setScene("/client/LocalMultiplayer.fxml");
+            }
         }
     }
 
@@ -129,6 +217,9 @@ public class PlaceBetsScreenController {
 
     @FXML
     void backtomenu(ActionEvent event){
+        if(PlayerSession.multiplayermode) {
+            PlayerSession.DesconectarMultijugador();
+        }
         MainWindow.app.setScene("/client/InitialPage.fxml");
     }
 

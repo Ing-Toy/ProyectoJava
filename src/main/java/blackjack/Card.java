@@ -7,6 +7,32 @@ public class Card {
         this.suit = theSuit;
         this.value = theValue;
     }
+    public Card(String face1){
+        String face = face1.toUpperCase();
+        char palo = face.charAt(face.length() - 1);
+        this.suit = String.valueOf(palo).toLowerCase();
+        String cara = face.substring(0, face.length() - 1);
+        switch (cara) {
+            case "A":
+                this.value = 1;
+                break;
+            case "J":
+                this.value = 11;
+                break;
+            case "Q":
+                this.value = 12;
+                break;
+            case "K":
+                this.value = 13;
+                break;
+            default:
+                try {
+                    this.value = Integer.parseInt(cara);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
     public Integer getValue(){
         if (this.value > 10) {
             return 10;
@@ -28,4 +54,5 @@ public class Card {
                 return Integer.toString(value) + this.suit;
         }
     }
+
 }

@@ -1,0 +1,70 @@
+.root
+{
+    -fx-background-image: url("/images/doorpaper.jpg");
+    -fx-background-size: cover;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+#boxTag
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#lblFront
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+}
+
+#lblChoose
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+}
+
+#btnSend
+{
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(208, 23, 23);
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-font-weight: bold;
+
+}
+
+#btnSend:hover
+{
+    -fx-background-color: rgb(255, 23, 23);
+}
+
+#btnSend:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#lblError
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+}

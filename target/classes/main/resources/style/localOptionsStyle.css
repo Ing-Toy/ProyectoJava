@@ -1,0 +1,135 @@
+.root
+{
+    -fx-background-image: url("/images/tablepaper.jpg");
+    -fx-background-size: cover;
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+
+#boxTag
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-pref-width: -1;
+}
+
+#lblTag
+{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-pref-width: -1;
+    -fx-alignment: center;
+    -fx-font-size: 20px;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+}
+
+#btn1p
+{
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(208, 23, 23);
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-font-weight: bold;
+}
+
+#btn1p:hover
+{
+    -fx-background-color: rgb(255, 23, 23);
+}
+
+#btn1p:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btn2p
+{
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(208, 23, 23);
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-font-weight: bold;
+}
+
+#btn2p:hover
+{
+    -fx-background-color: rgb(255, 23, 23);
+}
+
+#btn2p:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btn3p
+{
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(208, 23, 23);
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-font-weight: bold;
+}
+
+#btn3p:hover
+{
+    -fx-background-color: rgb(255, 23, 23);
+}
+
+#btn3p:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btn4p
+{
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(208, 23, 23);
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+    -fx-font-weight: bold;
+}
+
+#btn4p:hover
+{
+    -fx-background-color: rgb(255, 23, 23);
+}
+
+#btn4p:pressed
+{
+    -fx-padding: 2 4 3 4;
+}
+
+#btnBackToMenu
+{
+    -fx-text-fill: white;
+    -fx-pref-width: -1;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: black;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 1, 1);
+}
+
+#btnBackToMenu:hover
+{
+    -fx-background-color: rgb(80, 80, 80);
+}
+
+#btnBackToMenu:pressed
+{
+    -fx-padding: 2 4 3 4;
+}

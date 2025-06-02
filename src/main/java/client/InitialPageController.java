@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 public class InitialPageController {
 
     @FXML
@@ -30,7 +32,23 @@ public class InitialPageController {
 
     @FXML
     void enterGameOnline(ActionEvent event) {
-        MainWindow.app.setScene("/client/OnlineGameView.fxml");
+        PlayerSession.multiplayermode =true;
+        PlayerSession.ConectarMultijugador();
+        if (!PlayerSession.conectado){
+            System.out.println("No se pudo conectar a multijugador.");
+            MainWindow.app.setScene("/client/InitialPage.fxml");
+        }
+        System.out.println("Entrando a modo multijugador");
+
+        try {
+            String[] comando = PlayerSession.recibircomando();
+            if (comando[0].equalsIgnoreCase("setAsiento")){
+                PlayerSession.PlayerSeat = Integer.parseInt(comando[1]);
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        MainWindow.app.setScene("/client/PlaceBetsScreen.fxml");
     }
 
     @FXML

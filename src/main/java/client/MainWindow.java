@@ -28,7 +28,7 @@ public class MainWindow extends Application {
             stageWindow.setScene(scene);
             stageWindow.setResizable(false);
 
-            if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage")) {
+            if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage")|| path.contains("MultiplayerClientScreen")) {
                 stageWindow.setMaximized(true);
             } else {
                 stageWindow.setMaximized(false); // asegurarte que otras no lo estén
@@ -46,7 +46,7 @@ public class MainWindow extends Application {
             stageWindow.setScene(scene);
             stageWindow.setResizable(false);
 
-            if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage")) {
+            if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage") || path.contains("MultiplayerClientScreen")) {
                 stageWindow.setMaximized(true);
             } else {
                 stageWindow.setMaximized(false); // asegurarte que otras no lo estén
