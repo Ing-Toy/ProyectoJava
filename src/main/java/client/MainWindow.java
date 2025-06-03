@@ -18,6 +18,7 @@ public class MainWindow extends Application {
         stageWindow = stage;
         setScene("/client/NamePage.fxml");
         stage.setTitle("Team 4 blackjack");
+        stage.getIcons().add(new javafx.scene.image.Image(getClass().getResource("/images/cartasicon.png").toExternalForm()));
         stage.show();
     }
 
@@ -31,7 +32,7 @@ public class MainWindow extends Application {
             if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage")|| path.contains("MultiplayerClientScreen")) {
                 stageWindow.setMaximized(true);
             } else {
-                stageWindow.setMaximized(false); // asegurarte que otras no lo estén
+                stageWindow.setMaximized(false);
             }
 
         } catch (IOException e) {
@@ -49,7 +50,7 @@ public class MainWindow extends Application {
             if (path.contains("OnlineGameView.fxml") || path.contains("LocalMultiplayer") || path.contains("OneGamePage") || path.contains("MultiplayerClientScreen")) {
                 stageWindow.setMaximized(true);
             } else {
-                stageWindow.setMaximized(false); // asegurarte que otras no lo estén
+                stageWindow.setMaximized(false);
             }
 
             return loader.getController();
