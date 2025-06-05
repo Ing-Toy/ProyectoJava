@@ -1,6 +1,6 @@
 .root
 {
-    -fx-background-image: url("/images/localpaper.jpg");
+    -fx-background-image: url("/images/tablesmcpaper.png");
     -fx-background-size: cover;
     -fx-alignment: center;
     -fx-spacing: 10;
@@ -29,6 +29,7 @@
 #hboxPlayers
 {
     -fx-alignment: center;
+    -fx-pref-height: 180;
     -fx-spacing: 10;
 }
 

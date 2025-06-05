@@ -37,7 +37,7 @@ public class PlayerSession {
             if (cmd[0].equalsIgnoreCase("setAsiento")){
                 PlayerSeat = Integer.parseInt(cmd[1]);
             }else if (cmd[0].equalsIgnoreCase("fulltable")){
-                System.out.println("Casa llena.");
+                System.out.println("The table is full.");
                 conectado = false;
                 return;
             }else{
@@ -65,7 +65,7 @@ public class PlayerSession {
     }
 
     public static void mandarcomando(String comando) {
-        System.out.println("Playersession mandando: "+comando);
+        //System.out.println("Playersession mandando: "+comando);
         try {
             dos.writeUTF(comando);
         } catch (IOException e) {

@@ -35,20 +35,22 @@ public class InitialPageController {
         PlayerSession.multiplayermode =true;
         PlayerSession.ConectarMultijugador();
         if (!PlayerSession.conectado){
-            System.out.println("No se pudo conectar a multijugador.");
             MainWindow.app.setScene("/client/InitialPage.fxml");
         }
-        System.out.println("Entrando a modo multijugador");
+        System.out.println("Attempting to enter multiplayer.");
 
         try {
             String[] comando = PlayerSession.recibircomando();
             if (comando[0].equalsIgnoreCase("setAsiento")){
                 PlayerSession.PlayerSeat = Integer.parseInt(comando[1]);
             }
+            MainWindow.app.setScene("/client/PlaceBetsScreen.fxml");
         } catch (IOException e){
             e.printStackTrace();
+        } catch (Exception e){
+            System.out.println("Not able to enter multiplayer!");
+            MainWindow.app.setScene("/client/InitialPage.fxml");
         }
-        MainWindow.app.setScene("/client/PlaceBetsScreen.fxml");
     }
 
     @FXML

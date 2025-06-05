@@ -126,7 +126,6 @@ public class LocalMultiplayerController {
     @FXML
     public void initialize() {
         numPlayers += cantidadcomputadoras;
-        System.out.println("Cantidad de jugadores:"+numPlayers);
         switch (numPlayers){
             case 3:
                 vboxContainerPlayer2.setVisible(true);
@@ -296,7 +295,6 @@ public class LocalMultiplayerController {
 
     private void iniciarjuego(int playercant){
         engine = new GameEngine();
-        System.out.println("Jugadores: "+playercant);
         engine.excecuteGame(playercant);
         showHand(engine.getJugador(), hboxCardsPlayer1);
         lblPlayer1.setText(PlayerSession.playerName);
@@ -309,8 +307,6 @@ public class LocalMultiplayerController {
         }
 
         for (int i = 1; i <= cantidadcomputadoras; i++) {
-            System.out.println("ciclo for: "+i);
-
             if (PlayerSession.chipsCpu.get(i - 1) >= bet) {
                 PlayerSession.chipsCpu.set(i - 1, PlayerSession.chipsCpu.get(i - 1) - bet);
             }

@@ -164,8 +164,6 @@ public class PlaceBetsScreenController {
                     while (true) {
                         try{
                             String[] comando = PlayerSession.recibircomando();
-                            System.out.println("Comando recibido en PlaceBetsScreen: "+comando[0]);
-
                             if (comando[0].equalsIgnoreCase("empezar")){
                                 Platform.runLater(()->{
                                     MainWindow.app.setScene("/client/MultiplayerClientScreen.fxml");
@@ -173,14 +171,13 @@ public class PlaceBetsScreenController {
                                 return;
                             } else {
                                 Platform.runLater(()->{
-                                    lblPrincipal.setText("Teniendo problemas con servidor!");
+                                    lblPrincipal.setText("Please try again later!");
                                 });
-                                System.out.println("Comando recibido y no identificado: "+comando[0]);
                             }
                             Thread.sleep(120);
                         } catch (IOException e) {
                             Platform.runLater(()->{
-                                lblPrincipal.setText("Problema de red");
+                                lblPrincipal.setText("Network problem.");
                             });
                             throw new RuntimeException(e);
                         } catch (InterruptedException e){

@@ -151,6 +151,7 @@ public class MultiplayerClientScreenController {
         btnHit.setDisable(true);
         btnDouble.setDisable(true);
         btnStand.setDisable(true);
+        btnBackToMenu.setDisable(true);
         playerturn.setText("Setting up Game.");
         // Ejecutar sesion
         Thread ServerListener = new Thread(()->{
@@ -158,18 +159,14 @@ public class MultiplayerClientScreenController {
                 try{
                     Thread.sleep(100);
                     String[] comando = PlayerSession.recibircomando();
-                    System.out.println("Comando recibido en MultiplayerScreen: "+comando[0]);
-                    System.out.println("Comando recibido: "+comando[0]);
                     switch (comando[0]) {
                         case "nombres":
                             ActualizarNombres(comando[1]);
-                            System.out.println("Actualizar nombres: "+comando[1]);
                             break;
                         case "apuestas":
                             ActualizarApuestas(comando[1]);
                             break;
                         case "actualizar":
-                            System.out.println("Actualizando: "+comando[1]+"/ Carta: "+comando[3]);
                             Card carta = new Card(comando[3]);
                             switch (comando[1]) {
                                 case "0":
@@ -205,7 +202,6 @@ public class MultiplayerClientScreenController {
                             break;
                         case "turno":
                             if (Integer.parseInt(comando[1]) == PlayerSeat) {
-                                System.out.println("Turno del cliente.");
                                 Platform.runLater(()->{
                                     playerturn.setText("Your Turn!");
                                     lblPoints(PlayerSeat).setText(String.valueOf(EncontrarJugador(Integer.parseInt(comando[1])).TotalSum()));
@@ -216,7 +212,6 @@ public class MultiplayerClientScreenController {
                                     btnStand.setDisable(false);
                                 });
                             } else {
-                                System.out.println("Turno de asiento: "+comando[1]);
                                 if (comando[1].equalsIgnoreCase("0")) {
                                     Platform.runLater(()-> {
                                         playerturn.setText("Dealers turn.");
@@ -247,7 +242,7 @@ public class MultiplayerClientScreenController {
                             break;
                     }
                 } catch (SocketException socket){
-                    System.out.println("Jugador Desconectado.");
+                    System.out.println("Player Disconnected.");
                     return;
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -261,7 +256,6 @@ public class MultiplayerClientScreenController {
 
     @FXML
     void onHit(ActionEvent event) {
-        System.out.println("onHit detectado.");
         PlayerSession.mandarcomando("hit:");
         Platform.runLater(()-> {
             btnDouble.setDisable(true);
@@ -303,11 +297,11 @@ public class MultiplayerClientScreenController {
                     btnStand.setDisable(true);
                     btnDouble.setDisable(true);
                     btnReplay.setDisable(false);
+                    btnBackToMenu.setDisable(false);
                 });
         Map<Integer,String> FinalResultados = new HashMap<Integer,String>();
         String jugo = linea.substring(1,linea.length()-1);
         String[] results = jugo.split(",");
-        System.out.println("Procesando resultados con linea: "+linea);
         for (String resultado: results){
             String[] AsientoResultado = resultado.split("-");
             int asiento = Integer.parseInt(AsientoResultado[0]);
@@ -320,11 +314,8 @@ public class MultiplayerClientScreenController {
             String resultado = entrada.getValue();
             if (asiento == PlayerSeat) {
                 if (resultado.contains("[Win]")) {
-                    System.out.println("Cliente gano");
                     chips += bet * 2;
                 } else if (resultado.contains("[Draw]")) {
-                    System.out.println("Cliente empato");
-
                     chips += bet;
                 }
             }
@@ -360,10 +351,8 @@ public class MultiplayerClientScreenController {
             int asiento = Integer.parseInt(AsientoResultado[0]);
             String resultadofinal = AsientoResultado[1];
             if (resultadofinal != null && !resultadofinal.trim().isEmpty()){ //Modificado para marcar Asientos libres
-                System.out.println("Nombre encontrado: "+resultadofinal);
                 FinalResultados.put(asiento,resultadofinal);
             } else {
-                System.out.println("Nombre  NO encontrado: "+resultadofinal);
                 FinalResultados.put(asiento, "Empty Seat");
             }
         }
@@ -426,7 +415,6 @@ public class MultiplayerClientScreenController {
                     lblBetP(asiento).setText("Bet:" + resultado);
                 });
             } else {
-                System.out.println("Encontrado player sin apuesta");
                 Platform.runLater(()-> {
                     lblChipsP(asiento).setDisable(true);
                     lblBetP(asiento).setDisable(true);
